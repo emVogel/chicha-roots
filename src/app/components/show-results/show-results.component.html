@@ -1,0 +1,37 @@
+
+    <app-search (moviefinder)="find($event)"></app-search>
+    <div *ngIf="error">
+        <div class="alert">
+            <p>{{error}}</p>
+        </div>
+    </div>
+    <div *ngIf="movie">
+        <h3>{{movie.title}}</h3>
+        <ul>
+            <li> <span>Director:</span> {{movie.director}}</li>
+            <li><span>Producer:</span>{{movie.producer}}</li>
+            <li><span>Release Date:</span>{{movie.release_date}}</li>
+            <li>Characters: 
+                <ul>
+                    <li *ngFor=" let char of movie.characters">{{char}}</li>
+                </ul>
+            </li>
+            
+        </ul>
+        <span>Rate this Movie<em>*</em>:</span>
+       
+       <appRate #selected='rater'>
+           <app-rater  *ngFor="let r of rate; let i=index;"></app-rater>
+       </appRate>
+     
+       <div *ngIf="selected.rated>0">
+            <button (click)="saveMovie(selected.rated)">Save Movie</button>
+        </div>
+    </div>
+    
+    <div>
+ 
+ 
+       
+
+   

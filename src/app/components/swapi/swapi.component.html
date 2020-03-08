@@ -1,0 +1,23 @@
+<div class="header row row-12">
+    <h1>Die Swapi-Suche</h1>
+    <h3>Suchen und finden Sie und geben Sie Ihre persönliches Rating ab!</h3>
+</div>
+<div *ngIf="error">
+    <div class="alert">
+         <p>{{error}}</p>
+    </div>
+   
+</div>
+<div class="container">
+    <div class="results row row-6">
+        <app-show-results></app-show-results>
+    </div>
+    <div class="swapi-list row row-6">
+        <h2>Your SWAPI List</h2>
+       
+        <app-movie-list *ngFor="let movie of movies$ | async" 
+        [movie]="movie" 
+        
+        ></app-movie-list>
+    </div>
+</div>

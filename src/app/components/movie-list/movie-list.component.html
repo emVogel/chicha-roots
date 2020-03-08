@@ -1,0 +1,27 @@
+<div class="movie-item">
+  
+    <h3>{{movie.title}}</h3>
+    <p>Release Date: {{movie.release_date}}</p>
+    <p>Your Rating:</p>
+    <div *ngIf= "!switch; else edit_template">
+        <app-make-rater [count]="movie.personal_rating"></app-make-rater>
+        <p>
+            <button (click)="toggle()">Edit your Rating</button>
+        </p>
+    </div>
+   <ng-template #edit_template>
+       <p>Rate again</p>
+        <appRate #selected="rater">
+            <app-rater *ngFor="let r of rate; let i=index;"></app-rater>
+        </appRate>
+        <div *ngIf="selected.rated>0">
+           <p><button (click)="edit(selected.rated)">Save Movie</button></p> 
+        </div>
+        <p><button (click)="cancel()">Cancel</button></p>
+        
+   </ng-template>
+  
+    <p>
+    <button (click)="deleteMovie(movie.episode_id)">delete</button>
+    </p>
+</div>

@@ -1,0 +1,8 @@
+.movie-item{
+    border: 1px solid black;
+    padding:0.5em;
+    margin: 10px 0 10px;
+}
+div{
+    display:block;
+}
