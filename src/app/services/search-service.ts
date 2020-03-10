@@ -36,7 +36,7 @@ export class MovieSearchService implements SearchService{
          }
 
     //mergeMap anstatt switchMap, da mergeMap einen Datenstrom aus mehreren Observables zusammenführt, switchMap bei nur einem innen Observable
-    findCharacters(characters:Array<string>):Observable<string>{
+    findCharacters(characters:Array<string>):Observable<Array<string>>{
        return  from(characters).pipe(mergeMap(num=>this.getCharacters(num)))
     
     }

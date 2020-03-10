@@ -1,7 +1,7 @@
 import { IMovie } from './../../models/Imovie-interface';
 import { Component, OnInit, Host, Output, EventEmitter, OnDestroy, ViewChild } from '@angular/core';
 import {SearchService} from './../../services/abstractSearchService';
-
+import {toArray} from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -34,8 +34,8 @@ this.searchservice.find(query).then(movie=>{this.movie={
 }
 const characters=movie.characters;
 console.log(characters)
-this.searchservice.findCharacters(characters).subscribe(
-  data=>{this.character.push(data);
+this.searchservice.findCharacters(characters).pipe(toArray()).subscribe(
+  data=>{this.character=data;
     console.log(data, this.character)
         Object.assign(this.movie, {characters:this.character})
   });
