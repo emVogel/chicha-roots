@@ -28,7 +28,7 @@ export class MovieSearchService implements SearchService{
    
         return promise;
     }
-    async getMovies(searchparams): Promise<IMovie>{
+    async getMovies(searchparams:HttpParams): Promise<IMovie>{
         const movies_obj=await this.http.get<Promise <IMovieResponse>>(swapi_url, {params: searchparams}).toPromise();
             const movie=movies_obj.results[0];
             console.log(movie);
