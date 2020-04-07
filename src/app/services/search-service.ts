@@ -20,13 +20,13 @@ export class MovieSearchService implements SearchService{
     
     }
     //die Funktion gibt Promise zurück=>resolve löst die Suche anch den dazugehörigen Charcters aus
-    find(query:string):Promise<IMovie>{
+    find(query:string):Observable<IMovie>{
         const searchparams= new HttpParams().append('search', query);
 
         const promise=this.getMovies(searchparams);
         
    
-        return promise;
+        return from(promise);
     }
     async getMovies(searchparams:HttpParams): Promise<IMovie>{
         const movies_obj=await this.http.get<Promise <IMovieResponse>>(swapi_url, {params: searchparams}).toPromise();
