@@ -12,6 +12,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   movie:IMovie;
   character:Array<string>=[];
+  loading:boolean=false;
   @Output() moviefinder=new EventEmitter;
   //der service liegt im Host element vor, mit @Host sicht er auch nur im Host element nach dem provdider
   constructor(@Host() private searchservice: SearchService) { 
@@ -22,9 +23,9 @@ export class SearchComponent implements OnInit, OnDestroy {
     console.log('init searchComponent')
   }
  findMovie(query:string){
-  
+  this.loading=true;
    
-this.searchservice.find(query).then(movie=>{this.movie={
+this.searchservice.find(query).subscribe(movie=>{this.movie={
     title:movie.title,
     episode_id:movie.episode_id,
     director:movie.director,
@@ -40,7 +41,7 @@ this.searchservice.findCharacters(characters).pipe(toArray()).subscribe(
         Object.assign(this.movie, {characters:this.character})
   });
 this.moviefinder.emit(this.movie);
-
+this.loading=false;
 });
 
  }

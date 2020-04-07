@@ -1,8 +1,9 @@
 .spinner{
-    height:30px;
+    
+    padding:5px;
     background-color: brown;
     color:#fff;
     position:absolute;
-left:30%;
-top:50%;
+    left:45%;
+    top:50%;
 }

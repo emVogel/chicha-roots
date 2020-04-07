@@ -13,6 +13,7 @@ import { RaterComponent } from './components/partials/rater/rater.component';
 import { MakeRaterComponent } from './components/partials/make-rater/make-rater.component';
 import { RateDirective } from './components/partials/rate.directive';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
     MakeRaterComponent,
     RateDirective,
     MovieListComponent,
+    SpinnerComponent,
     
   ],
   imports: [
